@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <button @click="doClick()">-</button><input type="text" v-model="number" style="width: 20px"></input><button @click="doClick2()">+</button>
+</div>
+
+<script>
+    new Vue({
+        el:"#app",
+        data(){
+            return{
+                number:'1'
+            }
+        },
+        methods: {
+            doClick(index) {
+                if (this.number > 1)
+                    this.number--
+                else {
+                    alert("数量为1，不能再减")
+                }
+            },
+            doClick2(index) {
+                this.number++
+
+            },
+        },
+        watch:{
+            number(){
+                var reg = /^[0-9]+.?[0-9]*$/;
+                if (!reg.test(this.number)|this.number<0){
+                    this.number=1;
+                    alert("输入数据不合法")
+
+
+                }
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

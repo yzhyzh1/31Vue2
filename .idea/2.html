@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+    <style>
+        .bk1{background: white}
+        .bk2{background: red;color: white}
+    </style>
+</head>
+<body>
+<div id="app">
+    <demo-table></demo-table>
+</div>
+<script>
+    var DemoTable={
+        template:'<div><input type="button" @mouseleave="mouseleave()" @mouseenter="mouseenter()" @click="alert" :value="text" :class="this.number==0?background:background2" style="border: #a9ffe7 solid 2px;width: 100px;height: 35px;"></input></div>`',
+        data(){
+            return{
+                text:'HELLO',
+                bk:'bk1',
+                bk1:'bk2',
+                number:0,
+
+            }
+        },
+        methods:{
+            alert(){
+                alert(this.text)
+            },
+            mouseenter(){
+                this.number=1,
+                    console.log(this.number)
+
+
+            },
+            mouseleave(){
+                this.number=0,
+                    console.log(this.number)
+            }
+        }
+    }
+
+    new Vue({
+        el:"#app",
+        components:{
+            'demo-table':DemoTable
+        }
+    })
+</script>
+
+</body>
+</html>
